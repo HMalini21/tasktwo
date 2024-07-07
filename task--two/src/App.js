@@ -11,7 +11,12 @@ function App(props) {
   }
 
   const SquareElements = squares.map((square) => (
-    <Square key={square.id} on={square.on} id={square.id} handleClick={toggle} />
+    <Square
+      key={square.id}
+      on={square.on}
+      id={square.id}
+      // handleClick={toggle}
+    />
   ));
 
   return (
