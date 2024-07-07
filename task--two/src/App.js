@@ -6,7 +6,13 @@ import Square from './components/Square';
 function App(props) {
   const [squares, setSquares] = React.useState(Boxes);
 
-  const SquareElements = squares.map((square) => <Square key={square.id} on={square.on} />);
+  function toggle(id) {
+    console.log(id);
+  }
+
+  const SquareElements = squares.map((square) => (
+    <Square key={square.id} on={square.on} id={square.id} handleClick={toggle} />
+  ));
 
   return (
     <div className="App">
