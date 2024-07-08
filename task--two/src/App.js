@@ -7,16 +7,15 @@ function App(props) {
   const [squares, setSquares] = React.useState(Boxes);
 
   function toggle(id) {
-    console.log(id);
+    setSquares((prevSquare) => {
+      return prevSquare.map((square) => {
+        return square.id === id ? { ...square, on: !square.on } : square;
+      });
+    });
   }
 
   const SquareElements = squares.map((square) => (
-    <Square
-      key={square.id}
-      on={square.on}
-      id={square.id}
-      // handleClick={toggle}
-    />
+    <Square key={square.id} on={square.on} id={square.id} handleClick={toggle} />
   ));
 
   return (
@@ -27,3 +26,20 @@ function App(props) {
 }
 
 export default App;
+// function toggle(id) {
+//   setSquares((prevSquares) => {
+//     const newSquare = [];
+//     for (let i = 0; i < prevSquares.length; i++) {
+//       const currentSquare = prevSquares[i];
+//       if (currentSquare.id === id) {
+//         const updatedSquare = {
+//           ...currentSquare,
+//           on: !currentSquare.on,
+//         };
+//         newSquare.push(updatedSquare);
+//       } else {
+//         newSquare.push(currentSquare);
+//       }
+//     }
+//     return newSquare;
+//   });
